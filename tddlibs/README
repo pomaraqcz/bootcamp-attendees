@@ -1,4 +1,5 @@
 Lista tabel kursów pod adresem https://www.nbp.pl/kursy/xml/dir.txt
 Interesują nas tylko tabele A → aXXXzRRMMDD
+Najnowsza tabela https://www.nbp.pl/kursy/xml/LastA.xml
 Pomyślcie o mockito
 Nie używajcie API NBP :)
