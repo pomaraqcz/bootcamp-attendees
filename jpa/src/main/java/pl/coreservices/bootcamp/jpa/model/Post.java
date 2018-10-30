@@ -1,17 +1,24 @@
 package pl.coreservices.bootcamp.jpa.model;
 
+import javax.persistence.*;
 import java.util.Set;
 
 /**
  * Created by BKuczynski on 2016-12-14.
  */
+@Entity
 public class Post extends Content {
 
+
+	@OneToOne(mappedBy = "Content")
 	private Category mainCategory;
 
-	private Set<Category> categories;
+    @OneToMany(mappedBy="Content")
+    private Set<Category> categories;
+    @OneToMany(mappedBy="Content")
+    private Set<Comment> comments;
 
-	private Set<Comment> comments;
+
 
 	public Category getMainCategory() {
 		return mainCategory;
@@ -37,3 +44,4 @@ public class Post extends Content {
 		this.comments = comments;
 	}
 }
+

@@ -1,11 +1,18 @@
 package pl.coreservices.bootcamp.jpa.model;
 
+import javax.persistence.Embeddable;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
 import java.util.Set;
 
 /**
  * Created by BKuczynski on 2016-12-14.
  */
+@Entity
 public class Author {
+
+   @EmbeddedId
+   AuthorID authorId;
 
 	private String name;
 
@@ -26,4 +33,10 @@ public class Author {
 	public void setArticles(Set<Content> articles) {
 		this.articles = articles;
 	}
+}
+@Embeddable
+class AuthorID extends Comment{
+    private String name;
+    private Set<Content> articles;
+
 }

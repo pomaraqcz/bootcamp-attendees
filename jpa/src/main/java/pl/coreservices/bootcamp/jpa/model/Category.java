@@ -1,12 +1,16 @@
 package pl.coreservices.bootcamp.jpa.model;
 
+import javax.persistence.*;
+
 /**
  * Created by BKuczynski on 2016-12-14.
  */
+@Entity
 public class Category {
 
-	private String name;
-
+    @OneToMany(mappedBy="Category")
+    private String name;
+    @OneToMany(mappedBy="Category")
 	private Category parent;
 
 	public String getName() {
@@ -25,3 +29,5 @@ public class Category {
 		this.parent = parent;
 	}
 }
+
+

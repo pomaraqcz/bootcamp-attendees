@@ -1,17 +1,22 @@
 package pl.coreservices.bootcamp.jpa.model;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 /**
  * Created by BKuczynski on 2016-12-15.
  */
+@Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Content {
 
+	@EmbeddedId
+	ContentID contentId;
 	private Author author;
-
+    @OneToOne(mappedBy="Content")
 	private LocalDateTime publishedAt;
-
-	private String content;
+    @OneToOne(mappedBy="Content")
+    private String content;
 
 
 	public Author getAuthor() {
@@ -37,4 +42,14 @@ public class Content {
 	public void setContent(String content) {
 		this.content = content;
 	}
+}
+
+@Embeddable
+class ContentID{
+	private Author author;
+
+	private LocalDateTime publishedAt;
+
+	private String content;
+
 }
