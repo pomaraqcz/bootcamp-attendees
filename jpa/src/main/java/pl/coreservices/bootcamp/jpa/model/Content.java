@@ -9,15 +9,16 @@ import java.time.LocalDateTime;
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Content {
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	private long id;
 
-	@EmbeddedId
-	ContentID contentId;
+	@ManyToOne
 	private Author author;
-    @OneToOne(mappedBy="Content")
-	private LocalDateTime publishedAt;
-    @OneToOne(mappedBy="Content")
-    private String content;
 
+	private LocalDateTime publishedAt;
+
+	private String content;
 
 	public Author getAuthor() {
 		return author;
@@ -42,14 +43,16 @@ public class Content {
 	public void setContent(String content) {
 		this.content = content;
 	}
-}
 
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+}
 @Embeddable
 class ContentID{
-	private Author author;
-
-	private LocalDateTime publishedAt;
-
-	private String content;
 
 }

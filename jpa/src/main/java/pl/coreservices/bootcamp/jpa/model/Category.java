@@ -7,10 +7,10 @@ import javax.persistence.*;
  */
 @Entity
 public class Category {
+	@Id
+	private String name;
 
-    @OneToMany(mappedBy="Category")
-    private String name;
-    @OneToMany(mappedBy="Category")
+	@ManyToOne
 	private Category parent;
 
 	public String getName() {
@@ -29,5 +29,3 @@ public class Category {
 		this.parent = parent;
 	}
 }
-
-

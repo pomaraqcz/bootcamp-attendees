@@ -27,7 +27,7 @@ public class Application {
 	public CommandLineRunner demo() {
 		return (args)->{
 
-			entityManager.getTransaction().begin();
+//			entityManager.getTransaction().begin();
 			// tu załaduj dane do bazy
 		};
 	}

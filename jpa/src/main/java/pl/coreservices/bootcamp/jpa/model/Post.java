@@ -10,12 +10,12 @@ import java.util.Set;
 public class Post extends Content {
 
 
-	@OneToOne(mappedBy = "Content")
+	@ManyToOne
 	private Category mainCategory;
 
-    @OneToMany(mappedBy="Content")
-    private Set<Category> categories;
-    @OneToMany(mappedBy="Content")
+	@OneToMany
+	private Set<Category> categories;
+    @OneToMany
     private Set<Comment> comments;
 
 

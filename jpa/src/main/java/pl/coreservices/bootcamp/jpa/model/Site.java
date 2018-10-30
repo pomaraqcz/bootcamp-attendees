@@ -1,9 +1,6 @@
 package pl.coreservices.bootcamp.jpa.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by BKuczynski on 2016-12-15.
@@ -11,7 +8,7 @@ import javax.persistence.Id;
 @Entity
 public class Site extends Content {
 
-    @Id
+    @ManyToOne
 	private Site parent;
 
 	public Site getParent() {

@@ -10,15 +10,13 @@ import java.time.LocalDateTime;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Comment {
 
-	@EmbeddedId
-	CommentID commentd;
-
-    @OneToOne(mappedBy="Category")
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	private long id;
 	private LocalDateTime postedAt;
-    @OneToOne(mappedBy="Category")
-    private String content;
-    @OneToOne(mappedBy="Category")
-    private Post post;
+	private String content;
+	@ManyToOne
+	private Post post;
 
 	public LocalDateTime getPostedAt() {
 		return postedAt;
@@ -43,13 +41,12 @@ public class Comment {
 	public void setPost(Post post) {
 		this.post = post;
 	}
-}
-@Embeddable
-class CommentID extends Comment{
-	private LocalDateTime postedAt;
 
-	private String content;
+	public long getId() {
+		return id;
+	}
 
-	private Post post;
-
+	public void setId(long id) {
+		this.id = id;
+	}
 }

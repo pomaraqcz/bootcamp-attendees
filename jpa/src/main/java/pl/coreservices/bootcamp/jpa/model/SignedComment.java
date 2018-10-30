@@ -1,9 +1,6 @@
 package pl.coreservices.bootcamp.jpa.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by BKuczynski on 2016-12-15.
@@ -12,6 +9,7 @@ import javax.persistence.Id;
 public class SignedComment extends Comment {
 
 
+    @ManyToOne
 	private Author author;
 
 	public Author getAuthor() {

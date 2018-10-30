@@ -1,8 +1,6 @@
 package pl.coreservices.bootcamp.jpa.model;
 
-import javax.persistence.Embeddable;
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.util.Set;
 
 /**
@@ -11,11 +9,11 @@ import java.util.Set;
 @Entity
 public class Author {
 
-   @EmbeddedId
-   AuthorID authorId;
-
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private String name;
 
+	@OneToMany(mappedBy = "author")
 	private Set<Content> articles;
 
 	public String getName() {
@@ -33,10 +31,4 @@ public class Author {
 	public void setArticles(Set<Content> articles) {
 		this.articles = articles;
 	}
-}
-@Embeddable
-class AuthorID extends Comment{
-    private String name;
-    private Set<Content> articles;
-
 }
